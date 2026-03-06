@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# OpenClaw helper: call walmart-mcp tools via mcporter
+# Usage: walmart <tool_name> [param:value ...]
+set -euo pipefail
+
+MCPORTER_CONFIG="${HOME}/.openclaw/config/mcporter.json"
+TOOL="walmart.${1:?Usage: walmart <tool_name> [param:value ...]}"
+shift
+
+exec mcporter --config "$MCPORTER_CONFIG" call "$TOOL" "$@"

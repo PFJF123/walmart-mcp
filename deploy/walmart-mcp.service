@@ -1,0 +1,18 @@
+[Unit]
+Description=Walmart MCP Server
+After=network.target
+
+[Service]
+Type=simple
+User=justin
+WorkingDirectory=/home/justin/walmart-mcp
+ExecStart=/home/justin/.nvm/versions/node/v24.12.0/bin/node dist/index.js
+Restart=on-failure
+RestartSec=5
+Environment=NODE_ENV=production
+
+# Load env vars
+EnvironmentFile=/home/justin/walmart-mcp/.env
+
+[Install]
+WantedBy=multi-user.target
